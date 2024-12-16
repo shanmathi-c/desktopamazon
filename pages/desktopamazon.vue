@@ -205,13 +205,15 @@
                     </div>
                   </div>
                   <div class="flex flex-col">
-                    <img
-                      class="h-[100px] w-[200px]"
-                      src="https://images-eu.ssl-images-amazon.com/images/G/31/Img24/SMB/GW/December/Desktop_QC_Decor_2x._SY232_CB540581077_.jpg"
-                    />
-                    <div class="text-[15px] font-medium text-black pt-6">
-                      Decor
-                    </div>
+                    <NuxtLink to="/result">
+                      <img
+                        class="h-[100px] w-[200px]"
+                        src="https://images-eu.ssl-images-amazon.com/images/G/31/Img24/SMB/GW/December/Desktop_QC_Decor_2x._SY232_CB540581077_.jpg"
+                      />
+                      <div class="text-[15px] font-medium text-black pt-6">
+                        Decor
+                      </div>
+                    </NuxtLink>
                   </div>
                 </div>
 
