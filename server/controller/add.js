@@ -29,10 +29,12 @@ export class addController{
             });
         });
     }
+
     static getAdddata(req,res){
         const add = req.body
         console.log("hdkjdk",add,'ytguewygtdeuwyu')
         connection.query("INSERT INTO addedit SET ?",[add],(err,result) =>{
+            console.log('kkjh',result)
             if(err){
                 console.log(err)
                return res.json({
@@ -47,4 +49,9 @@ export class addController{
             });
         }) ;
     }
-    }
+}
+
+
+
+
+

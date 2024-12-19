@@ -17,25 +17,13 @@
           <input
             type="text"
             id="adminid"
+            v-model="editUser.adminId"
             name="adminid"
             placeholder="Enter the adminid"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           />
         </div>
-        <div class="px-[100px]">
-          <label
-            for="productid"
-            class="block text-2xl font-medium text-gray-700"
-            >Product Id</label
-          >
-          <input
-            type="text"
-            id="productid"
-            name="productid"
-            placeholder="Enter the productid"
-            class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-          />
-        </div>
+
         <div class="px-[100px]">
           <label
             for="productname"
@@ -45,6 +33,7 @@
           <input
             type="text"
             id="productname"
+            v-model="editUser.productName"
             name="productname"
             placeholder="Enter the product name"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
@@ -58,6 +47,7 @@
           <input
             type="text"
             id="category"
+            v-model="editUser.category"
             name="category"
             placeholder="Enter the category"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
@@ -71,18 +61,21 @@
           <input
             type="text"
             id="price"
+            v-model="editUser.price"
             name="price"
             placeholder="Enter the price"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           />
         </div>
+
         <div class="px-[100px]">
           <label for="discount" class="block text-2xl font-medium text-gray-700"
-            >Discount
-          </label>
+            >Discount</label
+          >
           <input
             type="text"
             id="discount"
+            v-model="editUser.discount"
             name="discount"
             placeholder="Enter the discount"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
@@ -91,11 +84,12 @@
 
         <div class="px-[100px]">
           <label for="brand" class="block text-2xl font-medium text-gray-700"
-            >Brand
-          </label>
+            >Brand</label
+          >
           <input
             type="text"
             id="brand"
+            v-model="editUser.brand"
             name="brand"
             placeholder="Enter the brand"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
@@ -104,23 +98,26 @@
 
         <div class="px-[100px]">
           <label for="add" class="block text-2xl font-medium text-gray-700"
-            >Add on Date
-          </label>
+            >Add on Date</label
+          >
           <input
             type="text"
             id="add"
+            v-model="editUser.createdAt"
             name="add"
             placeholder="Enter add on date"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           />
         </div>
+
         <div class="px-[100px]">
           <label for="edit" class="block text-2xl font-medium text-gray-700"
-            >Edit on Date
-          </label>
+            >Edit on Date</label
+          >
           <input
             type="text"
             id="edit"
+            v-model="editUser.updatedAt"
             name="edit"
             placeholder="Enter edit date"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
@@ -129,24 +126,26 @@
 
         <div class="px-[100px]">
           <label for="purchase" class="block text-2xl font-medium text-gray-700"
-            >purchase rate
-          </label>
+            >Purchase Rate</label
+          >
           <input
             type="number"
             id="purchase"
+            v-model="editUser.purchaseRate"
             name="purchase"
-            placeholder="Enter purchase"
+            placeholder="Enter purchase rate"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           />
         </div>
 
         <div class="px-[100px]">
           <label for="cart" class="block text-2xl font-medium text-gray-700"
-            >cart rate
-          </label>
+            >Cart Rate</label
+          >
           <input
-            type=" number"
+            type="number"
             id="cart"
+            v-model="editUser.cartRate"
             name="cart"
             placeholder="Enter cart rate"
             class="mt-1 pt-5 block w-[300px] rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
@@ -155,6 +154,7 @@
 
         <div class="flex items-center justify-center gap-2 pt-6">
           <button
+            @click="updateData($event)"
             class="border text-center text-white rounded-sm px-6 py-3 bg-slate-400 hover:bg-slate-600"
           >
             Save Changes
@@ -169,3 +169,76 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      editUser: {
+        productName: "",
+        category: "",
+        price: "",
+        discount: null,
+        brand: "",
+        purchaseRate: "",
+        cartRate: "",
+        adminId: "",
+      },
+      categories: [
+        {
+          id: 1,
+          categoryList: "clock",
+        },
+        {
+          id: 2,
+          categoryList: "glassitems",
+        },
+        {
+          id: 3,
+          categoryList: "spfttoy",
+        },
+        {
+          id: 4,
+          categoryList: "dress",
+        },
+        {
+          id: 5,
+          categoryList: "electronics",
+        },
+      ],
+    };
+  },
+  mounted() {
+    this.editUser.adminId = this.$route.query.adminId || "";
+
+    this.getIndiAdmin();
+  },
+  methods: {
+    async getIndiAdmin() {
+      const res = await this.$http.$get(
+        `http://localhost:5001/admin/get/indi?adminId=${this.editUser.adminId}`
+      );
+      if (res.success) {
+        this.editUser = { ...res.result[0] };
+      }
+    },
+
+    async updateData(event) {
+      event.preventDefault(); // Prevent page reload on button click
+      console.log("this.editUser", this.editUser);
+
+      const res = await this.$http.$put(
+        "http://localhost:5001/admin/put/update-admin",
+        {
+          body: this.editUser,
+        }
+      );
+
+      if (res.success) {
+        alert("Updated!");
+      } else {
+        console.error("Failed to update data", res.error);
+      }
+    },
+  },
+};
+</script>
